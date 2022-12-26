@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 export const DownBtn = (props) => {
-  const { onColor, toggle, witchBtn } = props;
+  const { onColor, array, toggle, witchBtn } = props;
   return(
     <DownButton id='down'>
       <Down

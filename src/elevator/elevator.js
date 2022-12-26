@@ -1,25 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 export const Elevator = (props) => {
-  const { onColor } = props;
+  const { onColor, array } = props;
+  const { floor5, floor4, floor3, floor2, floor1} = props;
+
+
+  const stayFloor = array.slice(-2)[0];
+  const goFloor = array.slice(-1)[0];
+  const math = stayFloor - goFloor;
 
   return (
     <Floor>
       <Efloor id='floor5'>
-        {onColor === 5 ? <OnEfloorP>5</OnEfloorP> : <EfloorP>5</EfloorP>}
+        {floor5 ? <OnEfloorP>5</OnEfloorP> : <EfloorP>5</EfloorP>}
       </Efloor>
       <Efloor id="floor4">
-        {onColor === 4 ? <OnEfloorP>4</OnEfloorP> : <EfloorP>4</EfloorP>}
+        {floor4 ? <OnEfloorP>4</OnEfloorP> : <EfloorP>4</EfloorP>}
       </Efloor>
       <Efloor id='floor3'>
-        {onColor === 3 ? <OnEfloorP>3</OnEfloorP> : <EfloorP>3</EfloorP>}
+        {floor3 ? <OnEfloorP>3</OnEfloorP> : <EfloorP>3</EfloorP>}
       </Efloor>
       <Efloor  id='floor2'>
-        {onColor === 2 ? <OnEfloorP>2</OnEfloorP> : <EfloorP>2</EfloorP>}
+        {floor2 ? <OnEfloorP>2</OnEfloorP> : <EfloorP>2</EfloorP>}
       </Efloor>
       <Efloor id='floor1'>
-        {onColor === 1 ? <OnEfloorP>1</OnEfloorP> : <EfloorP>1</EfloorP>}
+        {floor1 ? <OnEfloorP>1</OnEfloorP> : <EfloorP>1</EfloorP>}
       </Efloor>
     </Floor>
   )
@@ -48,4 +54,11 @@ const OnEfloorP = styled.p`
   margin: 0 10px 5px 0;
   border-radius: 5px;
   background-color: blue;
+`;
+
+const MoveEfloorP = styled.p`
+  line-height: 80px;
+  margin: 0 10px 5px 0;
+  border-radius: 5px;
+  background-color: yellow;
 `;
