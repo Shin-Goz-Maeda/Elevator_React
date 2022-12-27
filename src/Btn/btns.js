@@ -4,7 +4,7 @@ import { DownBtn } from "./down";
 import styled from 'styled-components';
 
 export const Btns = (props) => {
-  const { onColor, array, witchBtn, toggle } = props;
+  const { onColor, witchBtn, toggle } = props;
 
   return (
     <BtnBox id='btnBox'>

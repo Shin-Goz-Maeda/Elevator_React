@@ -1,14 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 export const Elevator = (props) => {
-  const { onColor, array } = props;
   const { floor5, floor4, floor3, floor2, floor1} = props;
-
-
-  const stayFloor = array.slice(-2)[0];
-  const goFloor = array.slice(-1)[0];
-  const math = stayFloor - goFloor;
 
   return (
     <Floor>

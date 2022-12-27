@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 export const Display = (props) => {
-  const { onColor, array } = props;
+  const { onColor } = props;
 
   return (
     <FloorLight >

@@ -16,225 +16,266 @@ const Content = () => {
   const [ floor4 , setFloor4 ] = useState(false);
   const [ floor5 , setFloor5 ] = useState(false);
 
-  console.log(onColor);
-
-
+  const [ active, setActive ] = useState(true);
 
   const moveElevator = () => {
     const onElevator = onColor.slice(-2)[0];
     const goingElevator = onColor.slice(-1)[0];
-    console.log(onElevator+"on");
-    console.log(goingElevator+"going");
-    if (onElevator === 5 && goingElevator === 1) {
-      setFloor5(true);
-      setTimeout(() => {
-        setFloor5(false);
-        setFloor4(true);
-      }, 1000);
-      setTimeout(() => {
-        setFloor4(false);
-        setFloor3(true);
-      }, 2000);
-      setTimeout(() => {
-        setFloor3(false);
-        setFloor2(true);
-      }, 3000);
-      setTimeout(() => {
-        setFloor2(false);
-        setFloor1(true);
-      }, 4000);
-    } else if (onElevator === 5 && goingElevator === 2) {
-      setFloor5(true);
-      setTimeout(() => {
-        setFloor5(false);
-        setFloor4(true);
-      }, 1000);
-      setTimeout(() => {
-        setFloor4(false);
-        setFloor3(true);
-      }, 2000);
-      setTimeout(() => {
-        setFloor3(false);
-        setFloor2(true);
-      }, 3000);
-    } else if (onElevator === 5 && goingElevator === 3) {
-      setFloor5(true);
-      setTimeout(() => {
-        setFloor5(false);
-        setFloor4(true);
-      }, 1000);
-      setTimeout(() => {
-        setFloor4(false);
-        setFloor3(true);
-      }, 2000);
-    } else if (onElevator === 5 && goingElevator === 4) {
-      setFloor5(true);
-      setTimeout(() => {
-        setFloor5(false);
-        setFloor4(true);
-      }, 1000);
 
-    } else if (onElevator === 4 && goingElevator === 1) {
-      setFloor4(true);
-      setTimeout(() => {
-        setFloor4(false);
-        setFloor3(true);
-      }, 1000);
-      setTimeout(() => {
-        setFloor3(false);
-        setFloor2(true);
-      }, 2000);
-      setTimeout(() => {
-        setFloor2(false);
-        setFloor1(true);
-      }, 3000);
-    } else if (onElevator === 4 && goingElevator === 2) {
-      setFloor4(true);
-      setTimeout(() => {
-        setFloor4(false);
-        setFloor3(true);
-      }, 1000);
-      setTimeout(() => {
-        setFloor3(false);
-        setFloor2(true);
-      }, 2000);
-    } else if (onElevator === 4 && goingElevator === 3) {
-      setFloor4(true);
-      setTimeout(() => {
-        setFloor4(false);
-        setFloor3(true);
-      }, 1000);
-    } else if (onElevator === 4 && goingElevator === 5) {
-      setFloor4(true);
-      setTimeout(() => {
-        setFloor4(false);
+    if (active) {
+      if (onElevator === 5 && goingElevator === 1) {
         setFloor5(true);
-      }, 1000);
+        setActive(false);
+        setTimeout(() => {
+          setFloor5(false);
+          setFloor4(true);
+        }, 1000);
+        setTimeout(() => {
+          setFloor4(false);
+          setFloor3(true);
+        }, 2000);
+        setTimeout(() => {
+          setFloor3(false);
+          setFloor2(true);
+        }, 3000);
+        setTimeout(() => {
+          setFloor2(false);
+          setFloor1(true);
+          setActive(true);
+        }, 4000);
+      } else if (onElevator === 5 && goingElevator === 2) {
+        setFloor5(true);
+        setActive(false);
+        setTimeout(() => {
+          setFloor5(false);
+          setFloor4(true);
+        }, 1000);
+        setTimeout(() => {
+          setFloor4(false);
+          setFloor3(true);
+        }, 2000);
+        setTimeout(() => {
+          setFloor3(false);
+          setFloor2(true);
+          setActive(true);
+        }, 3000);
+      } else if (onElevator === 5 && goingElevator === 3) {
+        setFloor5(true);
+        setActive(false);
+        setTimeout(() => {
+          setFloor5(false);
+          setFloor4(true);
+        }, 1000);
+        setTimeout(() => {
+          setFloor4(false);
+          setFloor3(true);
+          setActive(true);
+        }, 2000);
+      } else if (onElevator === 5 && goingElevator === 4) {
+        setFloor5(true);
+        setActive(false);
+        setTimeout(() => {
+          setFloor5(false);
+          setFloor4(true);
+          setActive(true);
+        }, 1000);
+  
+      } else if (onElevator === 4 && goingElevator === 1) {
+        setFloor4(true);
+        setActive(false);
+        setTimeout(() => {
+          setFloor4(false);
+          setFloor3(true);
+        }, 1000);
+        setTimeout(() => {
+          setFloor3(false);
+          setFloor2(true);
+        }, 2000);
+        setTimeout(() => {
+          setFloor2(false);
+          setFloor1(true);
+          setActive(true);
+        }, 3000);
+      } else if (onElevator === 4 && goingElevator === 2) {
+        setFloor4(true);
+        setActive(false);
+        setTimeout(() => {
+          setFloor4(false);
+          setFloor3(true);
+        }, 1000);
+        setTimeout(() => {
+          setFloor3(false);
+          setFloor2(true);
+          setActive(true);
+        }, 2000);
+      } else if (onElevator === 4 && goingElevator === 3) {
+        setFloor4(true);
+        setActive(false);
+        setTimeout(() => {
+          setFloor4(false);
+          setFloor3(true);
+          setActive(true);
+        }, 1000);
+      } else if (onElevator === 4 && goingElevator === 5) {
+        setFloor4(true);
+        setActive(false);
+        setTimeout(() => {
+          setFloor4(false);
+          setFloor5(true);
+          setActive(true);
+        }, 1000);
 
-    } else if (onElevator === 3 && goingElevator === 1) {
-      setFloor3(true);
-      setTimeout(() => {
-        setFloor3(false);
-        setFloor2(true);
-      }, 1000);
-      setTimeout(() => {
-        setFloor2(false);
-        setFloor1(true);
-      }, 2000);
-    } else if (onElevator === 3 && goingElevator === 2) {
-      setFloor3(true);
-      setTimeout(() => {
-        setFloor3(false);
-        setFloor2(true);
-      }, 1000);
-    } else if (onElevator === 3 && goingElevator === 4) {
-      setFloor3(true);
-      setTimeout(() => {
-        setFloor3(false);
-        setFloor4(true);
-      }, 1000);
-    } else if (onElevator === 3 && goingElevator === 5) {
-      setFloor3(true);
-      setTimeout(() => {
-        setFloor3(false);
-        setFloor4(true);
-      }, 1000);
-      setTimeout(() => {
-        setFloor4(false);
-        setFloor5(true);
-      }, 2000);
+      } else if (onElevator === 3 && goingElevator === 1) {
+        setFloor3(true);
+        setActive(false);
+        setTimeout(() => {
+          setFloor3(false);
+          setFloor2(true);
+        }, 1000);
+        setTimeout(() => {
+          setFloor2(false);
+          setFloor1(true);
+          setActive(true);
+        }, 2000);
+      } else if (onElevator === 3 && goingElevator === 2) {
+        setFloor3(true);
+        setActive(false);
+        setTimeout(() => {
+          setFloor3(false);
+          setFloor2(true);
+          setActive(true);
+        }, 1000);
+      } else if (onElevator === 3 && goingElevator === 4) {
+        setFloor3(true);
+        setActive(false);
+        setTimeout(() => {
+          setFloor3(false);
+          setFloor4(true);
+          setActive(true);
+        }, 1000);
+      } else if (onElevator === 3 && goingElevator === 5) {
+        setFloor3(true);
+        setActive(false);
+        setTimeout(() => {
+          setFloor3(false);
+          setFloor4(true);
+        }, 1000);
+        setTimeout(() => {
+          setFloor4(false);
+          setFloor5(true);
+          setActive(true);
+        }, 2000);
 
-    } else if (onElevator === 2 && goingElevator === 1) {
-      setFloor2(true);
-      setTimeout(() => {
-        setFloor2(false);
-        setFloor1(true);
-      }, 1000);
-    } else if (onElevator === 2 && goingElevator === 3) {
-      setFloor2(true);
-      setTimeout(() => {
-        setFloor2(false);
-        setFloor3(true);
-      }, 1000);
-    } else if (onElevator === 2 && goingElevator === 4) {
-      setFloor2(true);
-      setTimeout(() => {
-        setFloor2(false);
-        setFloor3(true);
-      }, 1000);
-      setTimeout(() => {
-        setFloor3(false);
-        setFloor4(true);
-      }, 2000);
-    } else if (onElevator === 2 && goingElevator === 5) {
-      setFloor2(true);
-      setTimeout(() => {
-        setFloor2(false);
-        setFloor3(true);
-      }, 1000);
-      setTimeout(() => {
-        setFloor3(false);
-        setFloor4(true);
-      }, 2000);
-      setTimeout(() => {
-        setFloor4(false);
-        setFloor5(true);
-      }, 3000);
+      } else if (onElevator === 2 && goingElevator === 1) {
+        setFloor2(true);
+        setActive(false);
+        setTimeout(() => {
+          setFloor2(false);
+          setFloor1(true);
+          setActive(true);
+        }, 1000);
+      } else if (onElevator === 2 && goingElevator === 3) {
+        setFloor2(true);
+        setActive(false);
+        setTimeout(() => {
+          setFloor2(false);
+          setFloor3(true);
+          setActive(true);
+        }, 1000);
+      } else if (onElevator === 2 && goingElevator === 4) {
+        setFloor2(true);
+        setActive(false);
+        setTimeout(() => {
+          setFloor2(false);
+          setFloor3(true);
+        }, 1000);
+        setTimeout(() => {
+          setFloor3(false);
+          setFloor4(true);
+          setActive(true);
+        }, 2000);
+      } else if (onElevator === 2 && goingElevator === 5) {
+        setFloor2(true);
+        setActive(false);
+        setTimeout(() => {
+          setFloor2(false);
+          setFloor3(true);
+        }, 1000);
+        setTimeout(() => {
+          setFloor3(false);
+          setFloor4(true);
+        }, 2000);
+        setTimeout(() => {
+          setFloor4(false);
+          setFloor5(true);
+          setActive(true);
+        }, 3000);
 
-    } else if (onElevator === 1 && goingElevator === 2) {
-      setFloor1(true);
-      setTimeout(() => {
-        setFloor1(false);
-        setFloor2(true);
-      }, 1000);
-    } else if (onElevator === 1 && goingElevator === 3) {
-      setFloor1(true);
-      setTimeout(() => {
-        setFloor1(false);
-        setFloor2(true);
-      }, 1000);
-      setTimeout(() => {
-        setFloor2(false);
-        setFloor3(true);
-      }, 2000);
-    } else if (onElevator === 1 && goingElevator === 4) {
-      setFloor1(true);
-      setTimeout(() => {
-        setFloor1(false);
-        setFloor2(true);
-      }, 1000);
-      setTimeout(() => {
-        setFloor2(false);
-        setFloor3(true);
-      }, 2000);
-      setTimeout(() => {
-        setFloor3(false);
-        setFloor4(true);
-      }, 3000);
-    } else if (onElevator === 1 && goingElevator === 5) {
-      setFloor1(true);
-      setTimeout(() => {
-        setFloor1(false);
-        setFloor2(true);
-      }, 1000);
-      setTimeout(() => {
-        setFloor2(false);
-        setFloor3(true);
-      }, 2000);
-      setTimeout(() => {
-        setFloor3(false);
-        setFloor4(true);
-      }, 3000);
-      setTimeout(() => {
-        setFloor4(false);
-        setFloor5(true);
-      }, 4000);
+      } else if (onElevator === 1 && goingElevator === 2) {
+        setFloor1(true);
+        setActive(false);
+        setTimeout(() => {
+          setFloor1(false);
+          setFloor2(true);
+          setActive(true);
+        }, 1000);
+      } else if (onElevator === 1 && goingElevator === 3) {
+        setFloor1(true);
+        setActive(false);
+        setTimeout(() => {
+          setFloor1(false);
+          setFloor2(true);
+        }, 1000);
+        setTimeout(() => {
+          setFloor2(false);
+          setFloor3(true);
+          setActive(true);
+        }, 2000);
+      } else if (onElevator === 1 && goingElevator === 4) {
+        setFloor1(true);
+        setActive(false);
+        setTimeout(() => {
+          setFloor1(false);
+          setFloor2(true);
+        }, 1000);
+        setTimeout(() => {
+          setFloor2(false);
+          setFloor3(true);
+        }, 2000);
+        setTimeout(() => {
+          setFloor3(false);
+          setFloor4(true);
+          setActive(true);
+        }, 3000);
+      } else if (onElevator === 1 && goingElevator === 5) {
+        setFloor1(true);
+        setActive(false);
+        setTimeout(() => {
+          setFloor1(false);
+          setFloor2(true);
+        }, 1000);
+        setTimeout(() => {
+          setFloor2(false);
+          setFloor3(true);
+        }, 2000);
+        setTimeout(() => {
+          setFloor3(false);
+          setFloor4(true);
+        }, 3000);
+        setTimeout(() => {
+          setFloor4(false);
+          setFloor5(true);
+          setActive(true);
+        }, 4000);
+      }
     }
   }
 
   const toggle = (a, b) => {
-    setOnColor([...onColor, a]);
-    setWitchBtn(b);
+    if (active) {
+      setOnColor([...onColor, a]);
+      setWitchBtn(b);
+    }
   };
 
   useEffect(() => {
@@ -246,7 +287,6 @@ const Content = () => {
     <Title>Elevator made of React</Title>
     <Contents>
       <Elevator
-        onColor={onColor.slice(-1)[0]}
         moveElevator={moveElevator}
         array={onColor}
         floor5={floor5}
@@ -257,12 +297,10 @@ const Content = () => {
         />
       <Display
         onColor={onColor.slice(-1)[0]}
-        array={onColor}
       />
       <Btns
         onColor={onColor.slice(-1)[0]}
         witchBtn={witchBtn}
-        array={onColor}
         toggle={toggle}
       />
     </Contents>
