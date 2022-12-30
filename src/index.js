@@ -7,9 +7,9 @@ import { Btns } from './Btn/btns';
 import styled from 'styled-components';
 
 const Content = () => {
-  const [ currentColorFloor, setCurrentColorFloor ] = useState();
+  const [ currentColorFloor, setCurrentColorFloor ] = useState(1);
   const [ goingColorFloor, setGoingColorFloor ] = useState();
-  const [ witchBtn, setWitchBtn ] = useState("");
+  const [ witchBtn, setWitchBtn ] = useState("up");
 
   const [ floor1 , setFloor1 ] = useState(true);
   const [ floor2 , setFloor2 ] = useState(false);
@@ -29,7 +29,7 @@ const Content = () => {
        * currentFloorより下の階を選択する場合は、すべて負数になる。
        *
        * down   up
-       * 1<-5=-4 5<-1=4
+       * 1<-5=setLoopCount(-4) 5<-1=4
        * 2<-5=-3 5<-2=3
        * 3<-5=-2 5<-3=2
        * 4<-5=-1 5<-4=1
@@ -294,10 +294,10 @@ const Content = () => {
   const showMovingDown = () => {
     setActive(false);
     for (let i = 0; i > loopCount; i++) {
-      setFloor(currentColorFloor + i, currentColorFloor + i + 1);
+      setFloor(currentColorFloor - i, currentColorFloor - i - 1);
       setTimeout(() => {
       }, 1000);
-      if ( currentColorFloor + i <= goingColorFloor ) {
+      if ( currentColorFloor - i <= goingColorFloor ) {
         break;
       };
     }
@@ -309,16 +309,31 @@ const Content = () => {
       case 5:
         setFloor5(false);
         break;
+      case -5:
+        setFloor5(false);
+        break;
       case 4:
+        setFloor4(false);
+        break;
+      case -4:
         setFloor4(false);
         break;
       case 3:
         setFloor3(false);
         break;
+      case -3:
+        setFloor4(false);
+        break;
       case 2:
         setFloor2(false);
         break;
+      case -2:
+        setFloor2(false);
+        break;
       case 1:
+        setFloor1(false);
+        break;
+      case -1:
         setFloor1(false);
         break;
       default :
@@ -331,16 +346,31 @@ const Content = () => {
       case 5:
         setFloor5(true);
         break;
+      case -5:
+        setFloor5(true);
+        break;
       case 4:
+        setFloor4(true);
+        break;
+      case -4:
         setFloor4(true);
         break;
       case 3:
         setFloor3(true);
         break;
+      case -3:
+        setFloor4(true);
+        break;
       case 2:
         setFloor2(true);
         break;
+      case -2:
+        setFloor2(true);
+        break;
       case 1:
+        setFloor1(true);
+        break;
+      case -1:
         setFloor1(true);
         break;
       default :
