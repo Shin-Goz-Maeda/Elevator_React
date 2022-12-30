@@ -15,10 +15,10 @@ export const Btns = (props) => {
 }
 
 /* eslint-disable */
+
 const BtnBox = styled.div`
   display: flex;
   width: 30%;
 `;
-
 
 /* eslint-enable */

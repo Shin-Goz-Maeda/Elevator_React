@@ -2,24 +2,24 @@ import React from 'react';
 import styled from 'styled-components';
 
 export const Display = (props) => {
-  const { onColor } = props;
+  const { onColor, witchBtn } = props;
 
   return (
     <FloorLight >
       <Light >
-        {onColor === 5 ? <OnLightP>5</OnLightP> : <LightP>5</LightP>}
+        { onColor === 5 ? <LightP witchBtn={witchBtn}>5</LightP> : <LightP witchBtn={""}>5</LightP> }
       </Light>
       <Light >
-        {onColor === 4 ? <OnLightP>4</OnLightP> : <LightP>4</LightP>}
+        { onColor === 4 ? <LightP witchBtn={witchBtn}>4</LightP> : <LightP witchBtn={""}>4</LightP> }
       </Light>
       <Light >
-        {onColor === 3 ? <OnLightP>3</OnLightP> : <LightP>3</LightP>}
+        { onColor === 3 ? <LightP witchBtn={witchBtn}>3</LightP> : <LightP witchBtn={""}>3</LightP> }
       </Light>
       <Light >
-        {onColor === 2 ? <OnLightP>2</OnLightP> : <LightP>2</LightP>}
+        { onColor === 2 ? <LightP witchBtn={witchBtn}>2</LightP> : <LightP witchBtn={""}>2</LightP> }
       </Light>
       <Light >
-        {onColor === 1 ? <OnLightP>1</OnLightP> : <LightP>1</LightP>}
+        { onColor === 1 ? <LightP witchBtn={witchBtn}>1</LightP> : <LightP witchBtn={""}>1</LightP> }
       </Light>
     </FloorLight>
   )
@@ -27,6 +27,7 @@ export const Display = (props) => {
 
 
 /* eslint-disable */
+
 const FloorLight = styled.div`
   width: 10%;
   text-align: center;
@@ -43,13 +44,7 @@ const LightP = styled.p`
   line-height: 80px;
   margin: 0 0 5px 0;
   border-radius: 15px;
-  background-color: #CCCCCC;
+  background-color: ${props => props.witchBtn === "" ? "#CCCCCC" : "red"};
 `;
 
-const OnLightP = styled.p`
-  line-height: 80px;
-  margin: 0 0 5px 0;
-  border-radius: 15px;
-  background-color: red;
-`;
 /* eslint-enable */
