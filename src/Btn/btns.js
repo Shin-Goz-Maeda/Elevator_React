@@ -4,12 +4,12 @@ import { DownBtn } from "./down";
 import styled from 'styled-components';
 
 export const Btns = (props) => {
-  const { onColor, witchBtn, toggle } = props;
+  const { goingColorFloor, witchBtn, toggle } = props;
 
   return (
     <BtnBox id='btnBox'>
-      <UpBtn onColor={onColor} witchBtn={witchBtn} toggle={toggle}/>
-      <DownBtn onColor={onColor} witchBtn={witchBtn} toggle={toggle}/>
+      <UpBtn goingColorFloor={goingColorFloor} witchBtn={witchBtn} toggle={toggle}/>
+      <DownBtn goingColorFloor={goingColorFloor} witchBtn={witchBtn} toggle={toggle}/>
     </BtnBox>
   )
 }

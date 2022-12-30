@@ -2,24 +2,24 @@ import React from 'react';
 import styled from 'styled-components';
 
 export const Display = (props) => {
-  const { onColor, witchBtn } = props;
+  const { goingColorFloor, witchBtn } = props;
 
   return (
     <FloorLight >
       <Light >
-        { onColor === 5 ? <LightP witchBtn={witchBtn}>5</LightP> : <LightP witchBtn={""}>5</LightP> }
+        { goingColorFloor === 5 ? <LightP witchBtn={witchBtn}>5</LightP> : <LightP witchBtn={""}>5</LightP> }
       </Light>
       <Light >
-        { onColor === 4 ? <LightP witchBtn={witchBtn}>4</LightP> : <LightP witchBtn={""}>4</LightP> }
+        { goingColorFloor === 4 ? <LightP witchBtn={witchBtn}>4</LightP> : <LightP witchBtn={""}>4</LightP> }
       </Light>
       <Light >
-        { onColor === 3 ? <LightP witchBtn={witchBtn}>3</LightP> : <LightP witchBtn={""}>3</LightP> }
+        { goingColorFloor === 3 ? <LightP witchBtn={witchBtn}>3</LightP> : <LightP witchBtn={""}>3</LightP> }
       </Light>
       <Light >
-        { onColor === 2 ? <LightP witchBtn={witchBtn}>2</LightP> : <LightP witchBtn={""}>2</LightP> }
+        { goingColorFloor === 2 ? <LightP witchBtn={witchBtn}>2</LightP> : <LightP witchBtn={""}>2</LightP> }
       </Light>
       <Light >
-        { onColor === 1 ? <LightP witchBtn={witchBtn}>1</LightP> : <LightP witchBtn={""}>1</LightP> }
+        { goingColorFloor === 1 ? <LightP witchBtn={witchBtn}>1</LightP> : <LightP witchBtn={""}>1</LightP> }
       </Light>
     </FloorLight>
   )

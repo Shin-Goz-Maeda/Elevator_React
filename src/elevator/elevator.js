@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 export const Elevator = (props) => {
+  // const { witchBtn, goingColorFloor } = props;
   const { floor5, floor4, floor3, floor2, floor1 } = props;
 
   return (

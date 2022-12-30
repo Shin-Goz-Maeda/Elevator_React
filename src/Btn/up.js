@@ -2,22 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 
 export const UpBtn = (props) => {
-  const { onColor, toggle, witchBtn } = props;
+  const { goingColorFloor, toggle, witchBtn } = props;
 
   return(
     <UpButton >
       <NoUseUp ></NoUseUp>
       <Up id='up4' onClick={() => {toggle(4, "up")}}>
-        { onColor === 4 ? <UpP witchBtn={witchBtn} >⬆︎</UpP> : <UpP >⬆︎</UpP> }
+        { goingColorFloor === 4 ? <UpP witchBtn={witchBtn} >⬆︎</UpP> : <UpP >⬆︎</UpP> }
       </Up>
       <Up id='up3' onClick={() => {toggle(3, "up")}}>
-        { onColor === 3 ? <UpP witchBtn={witchBtn} >⬆︎</UpP> : <UpP >⬆︎</UpP> }
+        { goingColorFloor === 3 ? <UpP witchBtn={witchBtn} >⬆︎</UpP> : <UpP >⬆︎</UpP> }
       </Up>
       <Up id='up2' onClick={() => {toggle(2, "up")}}>
-        { onColor === 2 ? <UpP witchBtn={witchBtn} >⬆︎</UpP> : <UpP >⬆︎</UpP> }
+        { goingColorFloor === 2 ? <UpP witchBtn={witchBtn} >⬆︎</UpP> : <UpP >⬆︎</UpP> }
       </Up>
       <Up id='up1' onClick={() => {toggle(1, "up")}}>
-        { onColor === 1 ? <UpP witchBtn={witchBtn} >⬆︎</UpP> : <UpP >⬆︎</UpP> }
+        { goingColorFloor === 1 ? <UpP witchBtn={witchBtn} >⬆︎</UpP> : <UpP >⬆︎</UpP> }
       </Up>
     </UpButton>
   )

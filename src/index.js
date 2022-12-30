@@ -7,9 +7,10 @@ import { Btns } from './Btn/btns';
 import styled from 'styled-components';
 
 const Content = () => {
-  const [ currentColorFloor, setCurrentColorFloor ] = useState(1);
-  const [ goingColorFloor, setGoingColorFloor ] = useState();
+  const [ onFloor, setOnFloor ] = useState([0, 1]);
   const [ witchBtn, setWitchBtn ] = useState("up");
+  const [ loopCount, setLoopCount ] = useState(0);
+  const [ active, setActive ] = useState(true);
 
   const [ floor1 , setFloor1 ] = useState(true);
   const [ floor2 , setFloor2 ] = useState(false);
@@ -17,292 +18,63 @@ const Content = () => {
   const [ floor4 , setFloor4 ] = useState(false);
   const [ floor5 , setFloor5 ] = useState(false);
 
-  const [ active, setActive ] = useState(true);
-  const [loopCount, setLoopCount] = useState(0);
+  // 現在いるフロア
+  const currentColorFloor = onFloor.slice(-2)[0];
+  // 行こうとしているフロア
+  const goingColorFloor = onFloor.slice(-1)[0];
 
-  console.log(loopCount);
+  /* down→downのみではなく、down→upを選択する可能性もあるため以下に変更。
+  * currentFloorより上の階を選択する場合は、すべて正数になる。
+  * currentFloorより下の階を選択する場合は、すべて負数になる。
+  *
+  * down   up
+  * 1<-5=setLoopCount(-4) 5<-1=4
+  * 2<-5=-3 5<-2=3
+  * 3<-5=-2 5<-3=2
+  * 4<-5=-1 5<-4=1
+  * 5<-5=0  5<-5=0
+  */
 
   const moveElevator = () => {
-    if (active) {
-      /* down→downのみではなく、down→upを選択する可能性もあるため以下に変更。
-       * currentFloorより上の階を選択する場合は、すべて正数になる。
-       * currentFloorより下の階を選択する場合は、すべて負数になる。
-       *
-       * down   up
-       * 1<-5=setLoopCount(-4) 5<-1=4
-       * 2<-5=-3 5<-2=3
-       * 3<-5=-2 5<-3=2
-       * 4<-5=-1 5<-4=1
-       * 5<-5=0  5<-5=0
-      */
-        setLoopCount(goingColorFloor - currentColorFloor);
-        if (witchBtn === "up") {
-          showMovingUp();
-        } else {
-          showMovingDown();
-        }
-      // if (currentColorFloor === 5 && goingColorFloor === 1) {
-      //   setLoopCount(currentColorFloor - goingColorFloor);
-      //   showMovingDown();
-      // } else if (currentColorFloor === 5 && goingColorFloor === 2) {
-      //   setFloor5(true);
-      //   setActive(false);
-      //   setTimeout(() => {
-      //     setFloor5(false);
-      //     setFloor4(true);
-      //   }, 1000);
-      //   setTimeout(() => {
-      //     setFloor4(false);
-      //     setFloor3(true);
-      //   }, 2000);
-      //   setTimeout(() => {
-      //     setFloor3(false);
-      //     setFloor2(true);
-      //     setActive(true);
-      //   }, 3000);
-      // } else if (currentColorFloor === 5 && goingColorFloor === 3) {
-      //   setFloor5(true);
-      //   setActive(false);
-      //   setTimeout(() => {
-      //     setFloor5(false);
-      //     setFloor4(true);
-      //   }, 1000);
-      //   setTimeout(() => {
-      //     setFloor4(false);
-      //     setFloor3(true);
-      //     setActive(true);
-      //   }, 2000);
-      // } else if (currentColorFloor === 5 && goingColorFloor === 4) {
-      //   setFloor5(true);
-      //   setActive(false);
-      //   setTimeout(() => {
-      //     setFloor5(false);
-      //     setFloor4(true);
-      //     setActive(true);
-      //   }, 1000);
-  
-      // } else if (currentColorFloor === 4 && goingColorFloor === 1) {
-      //   setFloor4(true);
-      //   setActive(false);
-      //   setTimeout(() => {
-      //     setFloor4(false);
-      //     setFloor3(true);
-      //   }, 1000);
-      //   setTimeout(() => {
-      //     setFloor3(false);
-      //     setFloor2(true);
-      //   }, 2000);
-      //   setTimeout(() => {
-      //     setFloor2(false);
-      //     setFloor1(true);
-      //     setActive(true);
-      //   }, 3000);
-      // } else if (currentColorFloor === 4 && goingColorFloor === 2) {
-      //   setFloor4(true);
-      //   setActive(false);
-      //   setTimeout(() => {
-      //     setFloor4(false);
-      //     setFloor3(true);
-      //   }, 1000);
-      //   setTimeout(() => {
-      //     setFloor3(false);
-      //     setFloor2(true);
-      //     setActive(true);
-      //   }, 2000);
-      // } else if (currentColorFloor === 4 && goingColorFloor === 3) {
-      //   setFloor4(true);
-      //   setActive(false);
-      //   setTimeout(() => {
-      //     setFloor4(false);
-      //     setFloor3(true);
-      //     setActive(true);
-      //   }, 1000);
-      // } else if (currentColorFloor === 4 && goingColorFloor === 5) {
-      //   setFloor4(true);
-      //   setActive(false);
-      //   setTimeout(() => {
-      //     setFloor4(false);
-      //     setFloor5(true);
-      //     setActive(true);
-      //   }, 1000);
-
-      // } else if (currentColorFloor === 3 && goingColorFloor === 1) {
-      //   setFloor3(true);
-      //   setActive(false);
-      //   setTimeout(() => {
-      //     setFloor3(false);
-      //     setFloor2(true);
-      //   }, 1000);
-      //   setTimeout(() => {
-      //     setFloor2(false);
-      //     setFloor1(true);
-      //     setActive(true);
-      //   }, 2000);
-      // } else if (currentColorFloor === 3 && goingColorFloor === 2) {
-      //   setFloor3(true);
-      //   setActive(false);
-      //   setTimeout(() => {
-      //     setFloor3(false);
-      //     setFloor2(true);
-      //     setActive(true);
-      //   }, 1000);
-      // } else if (currentColorFloor === 3 && goingColorFloor === 4) {
-      //   setFloor3(true);
-      //   setActive(false);
-      //   setTimeout(() => {
-      //     setFloor3(false);
-      //     setFloor4(true);
-      //     setActive(true);
-      //   }, 1000);
-      // } else if (currentColorFloor === 3 && goingColorFloor === 5) {
-      //   setFloor3(true);
-      //   setActive(false);
-      //   setTimeout(() => {
-      //     setFloor3(false);
-      //     setFloor4(true);
-      //   }, 1000);
-      //   setTimeout(() => {
-      //     setFloor4(false);
-      //     setFloor5(true);
-      //     setActive(true);
-      //   }, 2000);
-
-      // } else if (currentColorFloor === 2 && goingColorFloor === 1) {
-      //   setFloor2(true);
-      //   setActive(false);
-      //   setTimeout(() => {
-      //     setFloor2(false);
-      //     setFloor1(true);
-      //     setActive(true);
-      //   }, 1000);
-      // } else if (currentColorFloor === 2 && goingColorFloor === 3) {
-      //   setFloor2(true);
-      //   setActive(false);
-      //   setTimeout(() => {
-      //     setFloor2(false);
-      //     setFloor3(true);
-      //     setActive(true);
-      //   }, 1000);
-      // } else if (currentColorFloor === 2 && goingColorFloor === 4) {
-      //   setFloor2(true);
-      //   setActive(false);
-      //   setTimeout(() => {
-      //     setFloor2(false);
-      //     setFloor3(true);
-      //   }, 1000);
-      //   setTimeout(() => {
-      //     setFloor3(false);
-      //     setFloor4(true);
-      //     setActive(true);
-      //   }, 2000);
-      // } else if (currentColorFloor === 2 && goingColorFloor === 5) {
-      //   setFloor2(true);
-      //   setActive(false);
-      //   setTimeout(() => {
-      //     setFloor2(false);
-      //     setFloor3(true);
-      //   }, 1000);
-      //   setTimeout(() => {
-      //     setFloor3(false);
-      //     setFloor4(true);
-      //   }, 2000);
-      //   setTimeout(() => {
-      //     setFloor4(false);
-      //     setFloor5(true);
-      //     setActive(true);
-      //   }, 3000);
-
-      // } else if (currentColorFloor === 1 && goingColorFloor === 2) {
-      //   setFloor1(true);
-      //   setActive(false);
-      //   setTimeout(() => {
-      //     setFloor1(false);
-      //     setFloor2(true);
-      //     setActive(true);
-      //   }, 1000);
-      // } else if (currentColorFloor === 1 && goingColorFloor === 3) {
-      //   setFloor1(true);
-      //   setActive(false);
-      //   setTimeout(() => {
-      //     setFloor1(false);
-      //     setFloor2(true);
-      //   }, 1000);
-      //   setTimeout(() => {
-      //     setFloor2(false);
-      //     setFloor3(true);
-      //     setActive(true);
-      //   }, 2000);
-      // } else if (currentColorFloor === 1 && goingColorFloor === 4) {
-      //   setFloor1(true);
-      //   setActive(false);
-      //   setTimeout(() => {
-      //     setFloor1(false);
-      //     setFloor2(true);
-      //   }, 1000);
-      //   setTimeout(() => {
-      //     setFloor2(false);
-      //     setFloor3(true);
-      //   }, 2000);
-      //   setTimeout(() => {
-      //     setFloor3(false);
-      //     setFloor4(true);
-      //     setActive(true);
-      //   }, 3000);
-      // } else if (currentColorFloor === 1 && goingColorFloor === 5) {
-      //   setFloor1(true);
-      //   setActive(false);
-      //   setTimeout(() => {
-      //     setFloor1(false);
-      //     setFloor2(true);
-      //   }, 1000);
-      //   setTimeout(() => {
-      //     setFloor2(false);
-      //     setFloor3(true);
-      //   }, 2000);
-      //   setTimeout(() => {
-      //     setFloor3(false);
-      //     setFloor4(true);
-      //   }, 3000);
-      //   setTimeout(() => {
-      //     setFloor4(false);
-      //     setFloor5(true);
-      //     setActive(true);
-      //   }, 4000);
-      // }
+    setLoopCount(goingColorFloor - currentColorFloor);
+    if (loopCount >= 0) {
+      showMovingUp();
+      console.log("up");
+    } else {
+      showMovingDown();
+      console.log("down");
     }
-    setCurrentColorFloor(goingColorFloor);
+  };
+
+  const showMovingUp = () => {
+    for (let i = 0; i <= loopCount; i++) {
+      if ( currentColorFloor + i === loopCount ) {
+        setActive(true);
+        console.log(active);
+        break;
+      };
+      setTimeout(() => {
+        setFloor(currentColorFloor + i, currentColorFloor + i + 1);
+      }, 1000);
+    }
+  }
+
+    const showMovingDown = () => {
+    for (let i = 0; i >= loopCount; i--) {
+      if ( currentColorFloor - i === loopCount ) {
+        setActive(true);
+        break;
+      };
+      setTimeout(() => {
+        setFloor(currentColorFloor - i, currentColorFloor - i - 1);
+      }, 1000);
+    }
   }
 
   const setFloor = (before, after) => {
     setFloorBefore(before);
     setFloorAfter(after);
   };
-
-  const showMovingUp = () => {
-    setActive(false);
-    for (let i = 0; i < loopCount; i++) {
-      setFloor(currentColorFloor + i, currentColorFloor + i + 1);
-      setTimeout(() => {
-      }, 1000);
-      if ( currentColorFloor + i <= goingColorFloor ) {
-        break;
-      };
-    }
-    setActive(true);
-  }
-
-  const showMovingDown = () => {
-    setActive(false);
-    for (let i = 0; i > loopCount; i++) {
-      setFloor(currentColorFloor - i, currentColorFloor - i - 1);
-      setTimeout(() => {
-      }, 1000);
-      if ( currentColorFloor - i <= goingColorFloor ) {
-        break;
-      };
-    }
-    setActive(true);
-  }
 
   const setFloorBefore = (before) => {
     switch (before) {
@@ -379,15 +151,13 @@ const Content = () => {
   }
 
   const toggle = (a, b) => {
-    if (active) {
-      setGoingColorFloor(a);
-      setWitchBtn(b);
-    }
+    setOnFloor([...onFloor, a]);
+    setWitchBtn(b);
   };
 
   useEffect(() => {
     moveElevator();
-  }, [currentColorFloor, goingColorFloor]);
+  }, [onFloor, loopCount]);
 
   return (
     <>
@@ -399,13 +169,15 @@ const Content = () => {
         floor3={floor3}
         floor2={floor2}
         floor1={floor1}
-        />
+        // witchBtn={witchBtn}
+        // goingColorFloor={goingColorFloor}
+      />
       <Display
         witchBtn={witchBtn}
-        onColor={currentColorFloor}
+        goingColorFloor={goingColorFloor}
       />
       <Btns
-        onColor={currentColorFloor}
+        goingColorFloor={goingColorFloor}
         witchBtn={witchBtn}
         toggle={toggle}
       />
@@ -429,3 +201,16 @@ const Contents = styled.div`
   margin: 50px;
 `;
 /* eslint-enable */
+
+
+  // console.log("floor1=>" + floor1);
+  // console.log("floor2=>" + floor2);
+  // console.log("floor3=>" + floor3);
+  // console.log("floor4=>" + floor4);
+  // console.log("floor5=>" + floor5);
+
+  // console.log("active=>" + active);
+
+
+
+
