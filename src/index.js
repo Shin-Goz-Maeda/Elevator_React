@@ -46,6 +46,7 @@ const Content = memo(() => {
     for (let i = 0; i <= loopCount; i++) {
       setFloor(currentColorFloor + i);
       console.log(i);
+      // setTimeout(() => {}, 1000);
       if ( currentColorFloor + i === goingColorFloor) {
         break;
       }
@@ -55,6 +56,7 @@ const Content = memo(() => {
   const showMovingDown = () => {
     for (let i = 0; i >= loopCount; i--) {
       setFloor(currentColorFloor + i);
+      // setTimeout(() => {}, 1000);
       if ( currentColorFloor + i === goingColorFloor) {
         break;
       }
