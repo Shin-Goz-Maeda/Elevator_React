@@ -48,5 +48,5 @@ const OnEfloorP = styled.p`
   line-height: 80px;
   margin: 0 10px 5px 0;
   border-radius: 5px;
-  background-color: ${props => props.move ? "yellow" : "blue"};
+  background-color: yellow;
 `;
