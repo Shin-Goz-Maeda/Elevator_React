@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { UpBtn } from "./up";
 import { DownBtn } from "./down";
 import styled from 'styled-components';
 
-export const Btns = (props) => {
+export const Btns = memo((props) => {
   const { goingColorFloor, witchBtn, toggle } = props;
 
   return (
@@ -12,7 +12,7 @@ export const Btns = (props) => {
       <DownBtn goingColorFloor={goingColorFloor} witchBtn={witchBtn} toggle={toggle}/>
     </BtnBox>
   )
-}
+});
 
 /* eslint-disable */
 

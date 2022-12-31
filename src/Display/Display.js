@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 
-export const Display = (props) => {
+export const Display = memo((props) => {
   const { goingColorFloor, witchBtn } = props;
 
   return (
@@ -23,7 +23,7 @@ export const Display = (props) => {
       </Light>
     </FloorLight>
   )
-}
+});
 
 
 /* eslint-disable */

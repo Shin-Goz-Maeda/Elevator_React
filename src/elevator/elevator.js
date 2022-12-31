@@ -1,30 +1,30 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 
-export const Elevator = (props) => {
+export const Elevator = memo((props) => {
   // const { witchBtn, goingColorFloor } = props;
-  const { floor5, floor4, floor3, floor2, floor1 } = props;
+  const { floor } = props;
 
   return (
     <Floor>
       <Efloor id='floor5'>
-        {floor5 ? <OnEfloorP >5</OnEfloorP> : <EfloorP>5</EfloorP>}
+        {floor === 5 ? <OnEfloorP >5</OnEfloorP> : <EfloorP>5</EfloorP>}
       </Efloor>
       <Efloor id="floor4">
-        {floor4 ? <OnEfloorP >4</OnEfloorP> : <EfloorP>4</EfloorP>}
+        {floor === 4 ? <OnEfloorP >4</OnEfloorP> : <EfloorP>4</EfloorP>}
       </Efloor>
       <Efloor id='floor3'>
-        {floor3 ? <OnEfloorP >3</OnEfloorP> : <EfloorP>3</EfloorP>}
+        {floor === 3 ? <OnEfloorP >3</OnEfloorP> : <EfloorP>3</EfloorP>}
       </Efloor>
       <Efloor  id='floor2'>
-        {floor2 ? <OnEfloorP >2</OnEfloorP> : <EfloorP>2</EfloorP>}
+        {floor === 2 ? <OnEfloorP >2</OnEfloorP> : <EfloorP>2</EfloorP>}
       </Efloor>
       <Efloor id='floor1'>
-        {floor1 ? <OnEfloorP >1</OnEfloorP> : <EfloorP>1</EfloorP>}
+        {floor === 1 ? <OnEfloorP >1</OnEfloorP> : <EfloorP>1</EfloorP>}
       </Efloor>
     </Floor>
   )
-}
+});
 
 
 const Floor = styled.div`

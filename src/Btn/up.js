@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 
-export const UpBtn = (props) => {
+export const UpBtn = memo((props) => {
   const { goingColorFloor, toggle, witchBtn } = props;
 
   return(
@@ -21,7 +21,7 @@ export const UpBtn = (props) => {
       </Up>
     </UpButton>
   )
-}
+});
 
 
 /* eslint-disable */
