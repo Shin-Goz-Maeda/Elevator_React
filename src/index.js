@@ -1,23 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import { Elevator } from './elevator/elevator';
 import { Display } from './Display/Display';
 import { Btns } from './Btn/btns';
 import styled from 'styled-components';
 
-const Content = () => {
+const Content = memo(() => {
   const [ onFloor, setOnFloor ] = useState([0, 1]);
   const [ witchBtn, setWitchBtn ] = useState("up");
   const [ loopCount, setLoopCount ] = useState(0);
   const [ active, setActive ] = useState(true);
 
-  const [ floor1 , setFloor1 ] = useState(true);
-  const [ floor2 , setFloor2 ] = useState(false);
-  const [ floor3 , setFloor3 ] = useState(false);
-  const [ floor4 , setFloor4 ] = useState(false);
-  const [ floor5 , setFloor5 ] = useState(false);
-
+  const [ floor , setFloor ] = useState();
   // 現在いるフロア
   const currentColorFloor = onFloor.slice(-2)[0];
   // 行こうとしているフロア
@@ -35,9 +30,10 @@ const Content = () => {
   * 5<-5=0  5<-5=0
   */
 
+  console.log(onFloor);
+
   const moveElevator = () => {
-    setLoopCount(goingColorFloor - currentColorFloor);
-    if (loopCount >= 0) {
+    if (loopCount > 0) {
       showMovingUp();
       console.log("up");
     } else {
@@ -48,107 +44,22 @@ const Content = () => {
 
   const showMovingUp = () => {
     for (let i = 0; i <= loopCount; i++) {
-      if ( currentColorFloor + i === loopCount ) {
-        setActive(true);
-        console.log(active);
+      setFloor(currentColorFloor + i);
+      console.log(i);
+      if ( currentColorFloor + i === goingColorFloor) {
         break;
-      };
-      setTimeout(() => {
-        setFloor(currentColorFloor + i, currentColorFloor + i + 1);
-      }, 1000);
+      }
     }
-  }
-
-    const showMovingDown = () => {
-    for (let i = 0; i >= loopCount; i--) {
-      if ( currentColorFloor - i === loopCount ) {
-        setActive(true);
-        break;
-      };
-      setTimeout(() => {
-        setFloor(currentColorFloor - i, currentColorFloor - i - 1);
-      }, 1000);
-    }
-  }
-
-  const setFloor = (before, after) => {
-    setFloorBefore(before);
-    setFloorAfter(after);
   };
 
-  const setFloorBefore = (before) => {
-    switch (before) {
-      case 5:
-        setFloor5(false);
+  const showMovingDown = () => {
+    for (let i = 0; i >= loopCount; i--) {
+      setFloor(currentColorFloor + i);
+      if ( currentColorFloor + i === goingColorFloor) {
         break;
-      case -5:
-        setFloor5(false);
-        break;
-      case 4:
-        setFloor4(false);
-        break;
-      case -4:
-        setFloor4(false);
-        break;
-      case 3:
-        setFloor3(false);
-        break;
-      case -3:
-        setFloor4(false);
-        break;
-      case 2:
-        setFloor2(false);
-        break;
-      case -2:
-        setFloor2(false);
-        break;
-      case 1:
-        setFloor1(false);
-        break;
-      case -1:
-        setFloor1(false);
-        break;
-      default :
-        break;
+      }
     }
-  }
-
-  const setFloorAfter = (after) => {
-    switch (after) {
-      case 5:
-        setFloor5(true);
-        break;
-      case -5:
-        setFloor5(true);
-        break;
-      case 4:
-        setFloor4(true);
-        break;
-      case -4:
-        setFloor4(true);
-        break;
-      case 3:
-        setFloor3(true);
-        break;
-      case -3:
-        setFloor4(true);
-        break;
-      case 2:
-        setFloor2(true);
-        break;
-      case -2:
-        setFloor2(true);
-        break;
-      case 1:
-        setFloor1(true);
-        break;
-      case -1:
-        setFloor1(true);
-        break;
-      default :
-        break;
-    }
-  }
+  };
 
   const toggle = (a, b) => {
     setOnFloor([...onFloor, a]);
@@ -156,6 +67,7 @@ const Content = () => {
   };
 
   useEffect(() => {
+    setLoopCount(goingColorFloor - currentColorFloor);
     moveElevator();
   }, [onFloor, loopCount]);
 
@@ -164,11 +76,7 @@ const Content = () => {
     <Title>Elevator made of React</Title>
     <Contents>
       <Elevator
-        floor5={floor5}
-        floor4={floor4}
-        floor3={floor3}
-        floor2={floor2}
-        floor1={floor1}
+        floor={floor}
         // witchBtn={witchBtn}
         // goingColorFloor={goingColorFloor}
       />
@@ -184,7 +92,7 @@ const Content = () => {
     </Contents>
     </>
   )
-}
+});
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -210,7 +118,3 @@ const Contents = styled.div`
   // console.log("floor5=>" + floor5);
 
   // console.log("active=>" + active);
-
-
-
-
